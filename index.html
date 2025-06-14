@@ -1,0 +1,47 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Detection App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+        input, button {
+            margin: 8px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fraud Detection</h1>
+    <form action="/predict" method="post">
+        <input type="text" name="step" placeholder="Step">
+        <input type="text" name="type" placeholder="Type (as number)">
+        <input type="text" name="amount" placeholder="Amount">
+        <input type="text" name="oldbalanceOrg" placeholder="Old Balance Orig">
+        <input type="text" name="newbalanceOrig" placeholder="New Balance Orig">
+        <input type="text" name="oldbalanceDest" placeholder="Old Balance Dest">
+        <input type="text" name="newbalanceDest" placeholder="New Balance Dest">
+        <input type="text" name="hour" placeholder="Hour">
+        <button type="submit">Check Fraud</button>
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
